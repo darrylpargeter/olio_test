@@ -1,0 +1,42 @@
+.article {
+  display: grid;
+  grid-template-columns: .5fr 1fr .5fr;
+  grid-template-areas:
+  "img title title"
+  "img description ."
+  "img views actions";
+  gap: 1rem;
+  padding: 2rem;
+  padding-right: 0;
+  border-bottom: 1px solid #ededed;
+  cursor: pointer;
+
+
+  .article-img {
+    grid-area: img;
+    width: 300px;
+    height: 200px;
+    border-radius: 5%;
+    justify-self: center;
+  }
+
+  .article-title {
+    grid-area: title;
+    font-size: 2rem;
+  }
+
+  .article-description {
+    grid-area: description;
+    font-size: 1.6rem;
+  }
+
+  .article-views {
+    grid-area: views;
+    font-size: 1.6rem;
+  }
+
+  .article-actions {
+    grid-area: actions;
+  }
+}
+

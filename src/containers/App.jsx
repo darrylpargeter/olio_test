@@ -1,4 +1,6 @@
 import React from 'react';
+import ArticlesList from '@components/ArticlesList';
+import Map from '@components/Map';
 import useArticlesData from '@hooks/useArticlesData';
 
 const App = () => {
@@ -11,7 +13,10 @@ const App = () => {
   })
 
   return (
-    <h1>Hello</h1>
+    <>
+      <ArticlesList articles={response} />
+      <Map />
+    </>
   );
 }
 

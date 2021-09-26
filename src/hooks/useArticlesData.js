@@ -3,7 +3,7 @@ import React from 'react';
 const URL = 'https://s3-eu-west-1.amazonaws.com/olio-staging-images/developer/test-articles-v4.json';
 
 const initState = {
-  response: {},
+  response: [],
   isLoading: false,
   isError: false,
 }
