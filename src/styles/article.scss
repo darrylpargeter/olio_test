@@ -11,6 +11,10 @@
   border-bottom: 1px solid #ededed;
   cursor: pointer;
 
+  &--seen {
+    opacity: .5;
+  }
+
 
   .article-img {
     grid-area: img;
@@ -37,6 +41,11 @@
 
   .article-actions {
     grid-area: actions;
+
+    svg {
+      width: 25%;
+      height: 25%;
+    }
   }
 }
 

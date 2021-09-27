@@ -1,0 +1,42 @@
+.sidebar {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  background: white;
+  display: grid;
+  grid-template-rows: minmax(0, .1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+  "title"
+  "map"
+  "body";
+
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+
+
+  &--isOpen {
+    transform: translateX(0);
+    transition: transform 500ms ease-in-out;
+  }
+
+  &__title {
+    grid-area: title;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.5rem;
+  }
+
+  &__closeBtn {
+    cursor: pointer;
+  }
+
+  &__map {
+    grid-area: map;
+  }
+
+  &__body {
+    grid-area: body;
+  }
+}
