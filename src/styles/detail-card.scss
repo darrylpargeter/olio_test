@@ -1,5 +1,5 @@
 .details {
-  border: 1px solid #ededed;
+  border: 1px solid $off-white;
   border-radius: 1.2rem;
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   padding: 2.4rem;
@@ -31,7 +31,7 @@
     grid-area: status;
     text-transform: capitalize;
     font-size: 1.6rem;
-    color: #00a69c;
+    color: $main-colour;
     text-align: center;
     justify-self: end;
   }
@@ -43,8 +43,8 @@
 
   &__request-this {
     grid-area: request-this;
-    background: #00a69c;
-    color: #fff;
+    background: $main-colour;
+    color: $white;
     border: none;
     cursor: pointer;
     border-radius: .8rem;

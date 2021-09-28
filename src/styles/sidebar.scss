@@ -3,7 +3,7 @@
   position: absolute;
   z-index: 100;
   top: 0;
-  background: white;
+  background: $white;
   display: grid;
   grid-template-rows: minmax(0, auto) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   grid-template-columns: 1fr;
@@ -106,7 +106,7 @@
       "reactions profile-img";
 
       grid-template-columns: .5fr 1fr;
-      border-bottom: 1px solid #ededed;    
+      border-bottom: 1px solid $off-white;    
       padding-bottom: 2.4rem;
 
       @include desktop {

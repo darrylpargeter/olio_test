@@ -5,13 +5,9 @@
   transition: transform 200ms ease-out, 
               stroke 200ms ease-out;
 
-  &--isFoucsed {
-    transform: scale(1.2);
-    stroke: #008e85;
-  }
-
+  &--isFoucsed,
   &:hover {
     transform: scale(1.2);
-    stroke: #008e85;
+    stroke: $main-colour;
   }
 }

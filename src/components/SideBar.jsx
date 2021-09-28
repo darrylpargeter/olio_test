@@ -8,6 +8,7 @@ import format from 'date-fns/format'
 
 const SideBar = ({ isOpen, article, closeSidebar }) => {
   if (!Object.keys(article).length) return null;
+
   const createdDate = format(new Date(article.created_at), 'dd/MM/yyyy');
   const img = article.images[0]
 
@@ -70,7 +71,8 @@ const SideBar = ({ isOpen, article, closeSidebar }) => {
 
 SideBar.propTypes = {
   isOpen: PropTypes.bool,
-  article: PropTypes.object
+  article: PropTypes.object,
+  closeSidebar: PropTypes.func,
 }
 
 export default SideBar;

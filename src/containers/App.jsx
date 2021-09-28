@@ -47,7 +47,7 @@ function reducer(state, action) {
 }
 
 const App = () => {
-  const { isLoading, isError, response } = useArticlesData();
+  const { isLoading, response } = useArticlesData();
   const [state, dispatch] = React.useReducer(reducer, initState);
 
   const handleZoomTo = (point) => {

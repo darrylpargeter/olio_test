@@ -5,7 +5,12 @@ import MapMarker from '@components/icons/MapMarker.svg';
 
 const MarkerComp = ({ point, isFoucsed, handelClick }) => {
   return (
-    <Marker key={point.id} longitude={point.location.longitude} latitude={point.location.latitude} onClick={() => handelClick(point)}>
+    <Marker
+      key={point.id}
+      longitude={point.location.longitude}
+      latitude={point.location.latitude}
+      onClick={() => handelClick(point)}
+    >
       <MapMarker className={`marker ${isFoucsed ? 'marker--isFoucsed' : ''}`} />
     </Marker>
   )
@@ -13,6 +18,7 @@ const MarkerComp = ({ point, isFoucsed, handelClick }) => {
 
 MarkerComp.propTypes = {
   point: PropTypes.object,
+  isFoucsed: PropTypes.bool,
   handelClick: PropTypes.func,
 }
 
