@@ -68,7 +68,6 @@ const App = () => {
 
   const closeSidebar = () => {
     dispatch({ type: Actions.SET_SIDEBAR, payload: { isOpen: false } });
-    dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: state.sidebar.item.id });
   }
 
   const toggleSeen = (point) => {
