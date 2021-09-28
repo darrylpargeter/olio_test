@@ -8,8 +8,18 @@
   display: grid;
   grid-template-areas: 
   "price status"
+  "collection collection"
   "request-this request-this";
 
+  @include tablet {
+    margin-bottom: 4rem;
+    gap: 4rem;
+  }
+
+  @include phone {
+    margin-bottom: 4rem;
+    gap: 4rem;
+  }
 
   &__price {
     grid-area: price;
@@ -22,9 +32,13 @@
     text-transform: capitalize;
     font-size: 1.6rem;
     color: #00a69c;
-    padding: 1rem;
     text-align: center;
     justify-self: end;
+  }
+
+  &__collection {
+    grid-area: collection;
+    font-size: 1.8rem;
   }
 
   &__request-this {

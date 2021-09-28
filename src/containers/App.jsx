@@ -3,6 +3,7 @@ import ArticlesList from '@components/ArticlesList';
 import Map from '@components/Map';
 import SideBar from '@components/SideBar';
 import useArticlesData from '@hooks/useArticlesData';
+import { isMobile } from 'react-device-detect';
 
 const initState = {
   sidebar: {
@@ -30,32 +31,13 @@ function reducer(state, action) {
         }
       }
     }
-    case Actions.SET_SEEN_ITEM: {
-      return {
-        ...state,
-        seen: {
-          ...state.seen,
-          [action.payload]: true
-        }
-      }
-    }
-    case Actions.SET_UNSEEN_ITEM: {
-      return {
-        ...state,
-        seen: {
-          ...state.seen,
-          [action.payload]: false 
-        }
-      }
-    }
     case Actions.SET_TOGGLE_SEEN: {
-      console.log('action', action);
-      console.log('state', state);
+      const toggle = !state.seen?.[action.payload] ?? true;
       return {
         ...state,
         seen: {
           ...state.seen,
-          [action.payload]: !state.seen[action.payload]
+          [action.payload]: toggle,
         }
       }
     }
@@ -69,8 +51,9 @@ const App = () => {
   const [state, dispatch] = React.useReducer(reducer, initState);
 
   const handleZoomTo = (point) => {
-    dispatch({ type: Actions.SET_SIDEBAR, payload: { item: point } });
-    dispatch({ type: Actions.SET_SEEN_ITEM, payload: point.id });
+    const sidebarPayload = isMobile ? { item: point, isOpen: true } : { item: point };
+    dispatch({ type: Actions.SET_SIDEBAR, payload: sidebarPayload });
+    dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: point.id });
   }
 
   const openSideBar = (point) => {
@@ -85,11 +68,10 @@ const App = () => {
 
   const closeSidebar = () => {
     dispatch({ type: Actions.SET_SIDEBAR, payload: { isOpen: false } });
-    dispatch({ type: Actions.SET_SEEN_ITEM, payload: state.sidebar.item.id });
+    dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: state.sidebar.item.id });
   }
 
   const toggleSeen = (point) => {
-    console.log('point', point);
     dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: point.id });
   }
 

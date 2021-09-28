@@ -1,0 +1,9 @@
+.map {
+  @include tablet {
+    display: none;
+  }
+
+  @include phone {
+    display: none;
+  }
+}

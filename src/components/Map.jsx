@@ -10,8 +10,6 @@ const Map = ({ points, zoomTo, openSideBar }) => {
     zoom: 8
   });
 
-  console.log('points', points);
-
   React.useEffect(() => {
     if (zoomTo?.location) {
       setViewport({
@@ -34,6 +32,7 @@ const Map = ({ points, zoomTo, openSideBar }) => {
   )), [points, zoomTo]);
 
   return (
+    <span className="map" >
     <ReactMapGL 
       mapboxApiAccessToken="pk.eyJ1IjoiZGFycnlscGFyZ2V0ZXIiLCJhIjoiY2t1MXJkYnRrMDhibDMxbzY3Ymk0ZGlteSJ9.5BGnBSZ2DYMpVztTumAghg"
       width="100%"
@@ -43,6 +42,7 @@ const Map = ({ points, zoomTo, openSideBar }) => {
     >
       {markers}
     </ ReactMapGL>
+    </span>
   );
 }
 

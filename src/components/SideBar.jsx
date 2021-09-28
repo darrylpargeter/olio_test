@@ -8,8 +8,8 @@ import format from 'date-fns/format'
 
 const SideBar = ({ isOpen, article, closeSidebar }) => {
   if (!Object.keys(article).length) return null;
-  console.log('article', article);
   const createdDate = format(new Date(article.created_at), 'dd/MM/yyyy');
+  const img = article.images[0]
 
   return article?.location ? (
     <div className={`sidebar ${isOpen ? 'sidebar--isOpen' : '' }`}>
@@ -17,7 +17,11 @@ const SideBar = ({ isOpen, article, closeSidebar }) => {
         <h1>{article.title}</h1>
         <CloseIcon className="sidebar__closeBtn" onClick={closeSidebar} />
       </div>
+      <div className="sidebar__img">
+        <img src={img.files.medium} alt={article.title}/>
+      </div>
       <div className="sidebar__map">
+        <p>Approx. Location</p>
         <StaticMap
           width="100%"
           height="100%"

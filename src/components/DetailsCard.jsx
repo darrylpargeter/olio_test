@@ -10,6 +10,9 @@ const DetailsCard = ({ item }) => {
       <div className="details__status">
           {item.status}
       </div>
+      <div className="details__collection">
+        <p>Pick Up: {item.collection_notes}</p>
+      </div>
       <button className="details__request-this">Request This</button>
     </div>
   );

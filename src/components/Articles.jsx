@@ -10,12 +10,13 @@ const Articles = ({ article, handleClick, isSeen, toggleSeen }) => {
     handleClick(article);
   }
 
-  const handleSeenClick = () => {
+  const handleSeenClick = (e) => {
+    e.stopPropagation();
     toggleSeen(article);
   }
 
   return (
-    <li className="article" key={article.id} onClick={onClick}>
+    <li className={`article ${isSeen ? 'article--seen' : ''}`} key={article.id} onClick={onClick}>
       <img className="article-img" src={firstImg.files.medium} alt={article.title} />
       <h2 className="article-title">{article.title}</h2>
       <p className="article-description">

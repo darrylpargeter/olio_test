@@ -12,6 +12,22 @@
   border-bottom: 1px solid #ededed;
   cursor: pointer;
 
+  transition: background 250ms ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, .05);
+    transition: background 250ms ease-in-out;
+  }
+
+  @include phone {
+    grid-template-areas:
+    "img img img"
+    "img img img"
+    "title title title"
+    "description description description"
+    "views . actions";
+  }
+
   @include desktop {
     grid-template-columns: auto 1fr .5fr;
   }
@@ -27,6 +43,10 @@
     height: 200px;
     border-radius: 5%;
     justify-self: center;
+
+    @include phone {
+      justify-self: start;
+    }
   }
 
   .article-title {
@@ -46,6 +66,10 @@
     font-size: 1.6rem;
     align-self: end;
     margin-left: 2rem;
+
+    @include phone {
+      margin-left: 0;
+    }
   }
 
   .article-actions {
