@@ -50,7 +50,10 @@ const App = () => {
   const { isLoading, response } = useArticlesData();
   const [state, dispatch] = React.useReducer(reducer, initState);
 
+  // TODO check isBrowser
+  // issue on firefox
   const handleZoomTo = (point) => {
+    console.log('isMobile', isMobile);
     const sidebarPayload = isMobile ? { item: point, isOpen: true } : { item: point };
     dispatch({ type: Actions.SET_SIDEBAR, payload: sidebarPayload });
     dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: point.id });
