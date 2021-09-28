@@ -5,6 +5,10 @@
   display: grid;
   grid-template-columns: minmax(0, .5fr) minmax(0, 1fr);
 
+  @include desktop {
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
+  }
+
   &__sidebar {
     width: 100%;
     height: 100%;

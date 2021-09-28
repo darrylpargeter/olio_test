@@ -1,13 +1,13 @@
 import React from 'react';
 import { Marker } from 'react-map-gl';
 import PropTypes from 'prop-types';
+import MapMarker from '@components/icons/MapMarker.svg';
 
-const MarkerComp = ({ point, handelClick }) => {
+const MarkerComp = ({ point, isFoucsed, handelClick }) => {
+  console.log('isFoucsed', isFoucsed);
   return (
     <Marker key={point.id} longitude={point.location.longitude} latitude={point.location.latitude} onClick={() => handelClick(point)}>
-      <svg className="marker">
-        <circle cx={5} cy={5} r={4} fill="blue" />;
-      </svg>
+      <MapMarker className={`marker ${isFoucsed ? 'marker--isFoucsed' : ''}`} />
     </Marker>
   )
 }

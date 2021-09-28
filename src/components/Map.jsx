@@ -10,6 +10,8 @@ const Map = ({ points, zoomTo, openSideBar }) => {
     zoom: 8
   });
 
+  console.log('points', points);
+
   React.useEffect(() => {
     if (zoomTo?.location) {
       setViewport({
@@ -28,8 +30,8 @@ const Map = ({ points, zoomTo, openSideBar }) => {
   }
 
   const markers = React.useMemo(() => points.map(point => (
-    <MarkerComp point={point} handelClick={handelClick} key={`marker-${point.id}`} />
-  )), [points]);
+    <MarkerComp point={point} handelClick={handelClick} isFoucsed={zoomTo?.id === point.id} key={`marker-${point.id}`} />
+  )), [points, zoomTo]);
 
   return (
     <ReactMapGL 

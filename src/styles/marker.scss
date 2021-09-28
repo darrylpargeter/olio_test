@@ -1,3 +1,17 @@
 .marker {
   cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 200ms ease-out, 
+              stroke 200ms ease-out;
+
+  &--isFoucsed {
+    transform: scale(1.2);
+    stroke: #008e85;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    stroke: #008e85;
+  }
 }
