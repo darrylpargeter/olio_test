@@ -2,6 +2,7 @@ import React from 'react';
 import ArticlesList from '@components/ArticlesList';
 import Map from '@components/Map';
 import SideBar from '@components/SideBar';
+import Loader from '@components/Loader';
 import useArticlesData from '@hooks/useArticlesData';
 import { isMobile, isBrowser } from 'react-device-detect';
 
@@ -73,6 +74,8 @@ const App = () => {
   const toggleSeen = (point) => {
     dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: point.id });
   }
+
+  if (isLoading) return <Loader />
 
   return (
     <>
