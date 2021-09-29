@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapGL, { FlyToInterpolator } from 'react-map-gl';
+import ReactMapGL, { FlyToInterpolator, NavigationControl } from 'react-map-gl';
 import MarkerComp from '@components/Marker';
 import PropTypes from 'prop-types';
 
@@ -9,6 +9,11 @@ const Map = ({ points, zoomTo, hoveredItem, openSideBar }) => {
     latitude: 51.48,
     zoom: 8
   });
+
+  const navControlStyle= {
+    right: 10,
+    top: 10
+  };
 
   React.useEffect(() => {
     if (zoomTo?.location) {
@@ -44,6 +49,7 @@ const Map = ({ points, zoomTo, hoveredItem, openSideBar }) => {
       {...viewport}
       onViewportChange={(viewport) => setViewport(viewport)}
     >
+      <NavigationControl style={navControlStyle} />
       {markers}
     </ ReactMapGL>
     </span>
