@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import MapMarker from '@components/icons/MapMarker.svg';
 
 const MarkerComp = ({ point, isFoucsedFn, handelClick }) => {
-  const isFoucsed = isFoucsedFn();
+  const isFoucsed = isFoucsedFn ? isFoucsedFn() : false;
   return (
     <Marker
       key={point.id}

@@ -6,11 +6,12 @@ import EyeOff from '@components/icons/EyeOff.svg';
 const Articles = ({
   article,
   handleClick,
-  isSeen,
+  seen,
   toggleSeen,
   handleMouseOver,
 }) => {
   const firstImg = article.images[0];
+  const isSeen = seen?.[article.id] ?? false;
 
   const onClick = () => {
     handleClick(article);
