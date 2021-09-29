@@ -2,17 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Articles from '@components/Articles';
 
-const ArticlesList = ({ articles, handleClick, seen, toggleSeen }) => {
+const ArticlesList = ({ articles, articleProps }) => {
   return (
     <ul className="article-list">
       {articles.map((article) => (
-        <Articles 
-          article={article}
-          handleClick={handleClick}
-          isSeen={seen?.[article.id]}
-          toggleSeen={toggleSeen}
-          key={article.id}
-        />
+        <Articles article={article} {...articleProps} key={`article-${article.id}`} />
       ))}
     </ul>
   );
@@ -20,9 +14,7 @@ const ArticlesList = ({ articles, handleClick, seen, toggleSeen }) => {
 
 ArticlesList.propTypes = {
   articles: PropTypes.array,
-  handleClick: PropTypes.func,
-  seen: PropTypes.object,
-  toggleSeen: PropTypes.func,
+  articleProps: PropTypes.object,
 }
 
 export default ArticlesList;

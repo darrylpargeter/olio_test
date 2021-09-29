@@ -3,7 +3,8 @@ import { Marker } from 'react-map-gl';
 import PropTypes from 'prop-types';
 import MapMarker from '@components/icons/MapMarker.svg';
 
-const MarkerComp = ({ point, isFoucsed, handelClick }) => {
+const MarkerComp = ({ point, isFoucsedFn, handelClick }) => {
+  const isFoucsed = isFoucsedFn();
   return (
     <Marker
       key={point.id}
@@ -18,7 +19,7 @@ const MarkerComp = ({ point, isFoucsed, handelClick }) => {
 
 MarkerComp.propTypes = {
   point: PropTypes.object,
-  isFoucsed: PropTypes.bool,
+  isFoucsedFn: PropTypes.func,
   handelClick: PropTypes.func,
 }
 

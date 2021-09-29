@@ -11,7 +11,8 @@ const initState = {
     isOpen: false,
     item: {},
   },
-  seen: {}
+  seen: {},
+  hoveredItem: {},
 }
 
 const Actions = {
@@ -19,6 +20,7 @@ const Actions = {
   SET_TOGGLE_SEEN: 'set_toggle_seen',
   SET_SEEN_ITEM: 'set_seen_item',
   SET_UNSEEN_ITEM: 'set_unseen_item',
+  SET_HOVER_ITEM: 'set_hover_item',
 }
 
 function reducer(state, action) {
@@ -40,6 +42,12 @@ function reducer(state, action) {
           ...state.seen,
           [action.payload]: toggle,
         }
+      }
+    }
+    case Actions.SET_HOVER_ITEM: {
+      return {
+        ...state,
+        hoveredItem: action.payload,
       }
     }
     default:
@@ -75,18 +83,24 @@ const App = () => {
     dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: point.id });
   }
 
-  if (isLoading) return <Loader />
+  const handleMouseOver = (point) => {
+    dispatch({ type: Actions.SET_HOVER_ITEM, payload: point });
+  };
+
+  if (isLoading) return <Loader />;
+
+  const articleProps = {
+    handleClick: handleZoomTo,
+    seen: state.seen,
+    toggleSeen: toggleSeen,
+    handleMouseOver: handleMouseOver
+  } 
 
   return (
     <>
-      <ArticlesList 
-        articles={response}
-        handleClick={handleZoomTo}
-        seen={state.seen}
-        toggleSeen={toggleSeen}
-      />
+      <ArticlesList articles={response} articleProps={articleProps} />
       <div className="layout__sidebar">
-        <Map points={response} zoomTo={state.sidebar.item} openSideBar={openSideBar} />
+        <Map points={response} zoomTo={state.sidebar.item} hoveredItem={state.hoveredItem} openSideBar={openSideBar} />
         <SideBar isOpen={state.sidebar.isOpen} article={state.sidebar.item} closeSidebar={closeSidebar} />
       </div>
     </>
