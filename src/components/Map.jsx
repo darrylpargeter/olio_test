@@ -16,6 +16,20 @@ const Map = ({ points, zoomTo, hoveredItem, openSideBar }) => {
   };
 
   React.useEffect(() => {
+    const firstPoint = points[0];
+    if (firstPoint) {
+       setViewport({
+          ...viewport,
+          longitude: firstPoint.location.longitude,
+          latitude: firstPoint.location.latitude,
+          zoom: 12,
+          transitionDuration: 5000,
+          transitionInterpolator: new FlyToInterpolator(),
+        });
+     }
+  }, [points]);
+
+  React.useEffect(() => {
     if (zoomTo?.location) {
       setViewport({
         ...viewport,

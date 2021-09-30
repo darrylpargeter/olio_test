@@ -1,6 +1,7 @@
 $phone-width: 600px;
 $tablet-width: 768px;
 $desktop-width: 1024px;
+$uhd-width: 1920px;
 
 @mixin phone {
   @media (max-width: #{$phone-width}) {
@@ -16,6 +17,12 @@ $desktop-width: 1024px;
 
 @mixin desktop {
   @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin ultawide {
+  @media (min-width: #{$udh-width}) {
     @content;
   }
 }

@@ -3,10 +3,11 @@
   width: 100vw;
 
   display: grid;
-  grid-template-columns: minmax(0, .5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, .4fr) minmax(0, 1fr);
 
-  @include desktop {
-    grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
+
+  @include desktop  {
+    grid-template-columns: minmax(0, .5fr) minmax(0, .5fr);
   }
 
   @include tablet {

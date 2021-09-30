@@ -4,7 +4,6 @@ import Map from '@components/Map';
 import SideBar from '@components/SideBar';
 import Loader from '@components/Loader';
 import useArticlesData from '@hooks/useArticlesData';
-import { isMobile, isBrowser } from 'react-device-detect';
 
 const initState = {
   sidebar: {
@@ -44,6 +43,15 @@ function reducer(state, action) {
         }
       }
     }
+    case Actions.SET_SEEN_ITEM: {
+      return {
+        ...state,
+        seen: {
+          ...state.seen,
+          [action.payload]: true,
+        }
+      }
+    }
     case Actions.SET_HOVER_ITEM: {
       return {
         ...state,
@@ -59,13 +67,8 @@ const App = () => {
   const { isLoading, response } = useArticlesData();
   const [state, dispatch] = React.useReducer(reducer, initState);
 
-  const handleZoomTo = (point) => {
-    const sidebarPayload = isMobile && !isBrowser ? { item: point, isOpen: true } : { item: point };
-    dispatch({ type: Actions.SET_SIDEBAR, payload: sidebarPayload });
-    dispatch({ type: Actions.SET_TOGGLE_SEEN, payload: point.id });
-  }
-
   const openSideBar = (point) => {
+    dispatch({ type: Actions.SET_SEEN_ITEM, payload: point.id });
     dispatch({ 
       type: Actions.SET_SIDEBAR, 
       payload: { 
@@ -87,21 +90,23 @@ const App = () => {
     dispatch({ type: Actions.SET_HOVER_ITEM, payload: point });
   };
 
-  if (isLoading) return <Loader />;
-
   const articleProps = {
-    handleClick: handleZoomTo,
+    handleClick: openSideBar,
     seen: state.seen,
     toggleSeen: toggleSeen,
     handleMouseOver: handleMouseOver
   } 
 
+  if (isLoading) return <Loader />;
+
   return (
     <>
-      <ArticlesList articles={response} articleProps={articleProps} />
-      <div className="layout__sidebar">
-        <Map points={response} zoomTo={state.sidebar.item} hoveredItem={state.hoveredItem} openSideBar={openSideBar} />
-        <SideBar isOpen={state.sidebar.isOpen} article={state.sidebar.item} closeSidebar={closeSidebar} />
+      <div className="layout">
+        <ArticlesList articles={response} articleProps={articleProps} />
+        <div className="layout__sidebar">
+          <Map points={response} zoomTo={state.sidebar.item} hoveredItem={state.hoveredItem} openSideBar={openSideBar} />
+          <SideBar isOpen={state.sidebar.isOpen} article={state.sidebar.item} closeSidebar={closeSidebar} />
+        </div>
       </div>
     </>
   );

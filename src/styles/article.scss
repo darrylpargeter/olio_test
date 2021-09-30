@@ -1,86 +1,87 @@
 .article {
   display: grid;
-  grid-template-columns: .5fr 1fr .5fr;
-  grid-template-rows: .5fr 1fr .2fr;
-  grid-template-areas:
-  "img title title"
-  "img description description"
-  "img views actions";
-  gap: 1rem;
-  padding: 2rem;
-  padding-right: 0;
-  border-bottom: 1px solid $off-white;
+  grid-template-areas: 
+  "img title seen"
+  "img description ."
+  "img views price";
+  grid-template-columns: auto 1fr .5fr;
+  grid-template-rows: .5fr 1fr .5fr;
+  margin: 2.4rem;
+  gap: 1.6rem;
   cursor: pointer;
-
-  transition: background 250ms ease-in-out;
-
-  &:hover {
-    background: rgba(0, 0, 0, .05);
-    transition: background 250ms ease-in-out;
-  }
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid #DDDDDD;
 
   @include phone {
     grid-template-areas:
     "img img img"
     "img img img"
-    "title title title"
+    "title title seen"
     "description description description"
-    "views . actions";
-  }
-
-  @include desktop {
+    "views . price";
     grid-template-columns: auto 1fr .5fr;
+    grid-template-rows: 1fr 1fr repeat(3, auto);
+
+    padding-top: 2rem;
+    margin: 1.2rem;
+    gap: 0;
   }
 
-  &--seen {
-    opacity: .5;
-  }
-
-
-  .article-img {
+  &-img {
     grid-area: img;
     width: 300px;
     height: 200px;
     border-radius: 5%;
-    justify-self: center;
 
     @include phone {
-      justify-self: start;
+      justify-self: center;
+      margin-bottom: 1rem;
     }
   }
 
-  .article-title {
+  &-title {
     grid-area: title;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
-  .article-description {
-    grid-area: description;
-    font-size: 1.6rem;
-    border-bottom: 1px solid $off-white;
-    margin-right: 1.8rem;
-  }
-
-  .article-views {
-    grid-area: views;
-    font-size: 1.6rem;
-    align-self: end;
-    margin-left: 2rem;
-
-    @include phone {
-      margin-left: 0;
-    }
-  }
-
-  .article-actions {
-    grid-area: actions;
-    align-self: end;
+  &-actions {
+    grid-area: seen;
     justify-self: end;
-    margin-right: 2rem;
+    cursor: pointer;
+
+    .article-actions-viewed {
+      stroke: $main-colour;
+    }
 
     svg {
-      width: 1.8rem;
+      width: 2.4rem;
     }
   }
-}
 
+  &-description {
+    grid-area: description;
+    font-size: 1.4rem;
+    color: #858585;
+    display: flex;
+    align-items: center;
+  }
+
+  &-views {
+    grid-area: views;
+    font-size: 1.4rem;
+    align-self: end;
+
+    .article-view-total {
+      font-weight: 600;
+    }
+  }
+
+  &-price {
+    grid-area: price;
+    font-size: 1.8rem;
+    align-self: end;
+    justify-self: end;
+    font-weight: 600;
+  }
+}

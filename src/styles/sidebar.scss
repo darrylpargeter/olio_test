@@ -36,6 +36,7 @@
 
   &__img {
     grid-area: img;
+    justify-self: center;
 
     img {
       width: 100%;
@@ -102,23 +103,19 @@
     .sidebar__body-title {
       display: grid;
       grid-template-areas:
-      "posted-by profile-img"
-      "reactions profile-img";
+      "posted-by posted-by profile-img"
+      "reactions . profile-img";
 
-      grid-template-columns: .5fr 1fr;
+      grid-template-columns: auto 1fr 1fr;
       border-bottom: 1px solid $off-white;    
       padding-bottom: 2.4rem;
 
-      @include desktop {
-        grid-template-columns: 1fr .5fr;
-      }
-
       @include tablet {
-        grid-template-columns: 1fr .5fr;
+        grid-template-columns: auto 1fr .5fr;
       }
 
       @include phone {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: auto 1fr auto;
       }
     }
 
@@ -150,15 +147,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 1.6rem;
-      width: 25%;
-
-      @include desktop {
-        width: 85%;
-      }
-
-      @include tablet {
-        width: 100%;
-      }
+      gap: 1rem;
 
       @include phone {
         font-size: 1.4rem;

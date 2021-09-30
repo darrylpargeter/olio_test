@@ -35,14 +35,23 @@ const Articles = ({
     >
       <img className="article-img" src={firstImg.files.medium} alt={article.title} />
       <h2 className="article-title">{article.title}</h2>
-      <p className="article-description">
-        {article.description}
-      </p>
-      <div className="article-views">
-        <p>{article.reactions.views} views</p>
-      </div>
+
       <div className="article-actions">
-        {isSeen ? <EyeOff onClick={handleSeenClick} /> : <Eye onClick={handleSeenClick} />}
+        {isSeen ? <EyeOff className="article-actions-viewed" onClick={handleSeenClick} /> : <Eye  onClick={handleSeenClick} />}
+      </div>
+
+      <div className="article-description">
+        <p >
+          {article.description}
+        </p>
+      </div>
+
+      <div className="article-views">
+        <p><span className="article-view-total">{article.reactions.views}</span> views</p>
+      </div>
+
+      <div className="article-price">
+        {article.value.price === 0 ? 'Free' : `£${article.value.price}`}
       </div>
     </li>
   );

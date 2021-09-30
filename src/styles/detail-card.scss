@@ -5,6 +5,10 @@
   padding: 2.4rem;
   width: 75%;
 
+  @include phone {
+    width: 85%;
+  }
+
   display: grid;
   grid-template-areas: 
   "price status"
